@@ -12,7 +12,7 @@ double max(const double data[], int size) {
 }
 
 
-// Ledeglich zum testen
+// Lediglich zum testen
 int main() {
     double test_data[7] = {1.4, 1233.3843, 0.00001, -0.8, -44.3, 1234.0};
 
