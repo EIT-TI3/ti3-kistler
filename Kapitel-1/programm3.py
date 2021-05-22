@@ -1,3 +1,6 @@
+# (c) 2021 Martin Kistler
+
+
 inputs = []
 for i in range(1, 4):
     inputs.append(float(input(f'{i}. Zahl: ')))

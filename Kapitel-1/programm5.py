@@ -1,3 +1,6 @@
+# (c) 2021 Martin Kistler
+
+
 from datetime import date
 
 print(f'Tage zwischen 1.1.2000 und 24.12.2020: {6 * 366 + 15 * 365 - 8} Tage')

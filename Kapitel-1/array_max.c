@@ -1,3 +1,6 @@
+// (c) 2021 Martin Kistler
+
+
 #include <stdio.h>
 
 // Die eigentliche Lösung der Aufgabe

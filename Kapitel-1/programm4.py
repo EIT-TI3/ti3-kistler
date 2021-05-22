@@ -1,3 +1,6 @@
+# (c) 2021 Martin Kistler
+
+
 import math
 
 inp = float(input('Zahl: '))
