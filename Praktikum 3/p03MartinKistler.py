@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 # (c) 2021 Martin Kistler
 
-
 from versuch3 import check_time
 
 
@@ -30,34 +29,49 @@ def add_entry(table, date, time, val_name0, val_name1, val0, val1):
 
 def merge(table0, table1):
     merged_table = {}
-    val_name0 = str(table0.keys() - {'date', 'time'}).strip("{'}")
-    val_name1 = str(table1.keys() - {'date', 'time'}).strip("{'}")
-    i0 = 0
-    i1 = 0
-    while True:
-        x = check_time(table0, table1, i0, i1)
-        if x == 1:
-            add_entry(merged_table, table1['date'][i1], table1['time'][i1], val_name0, val_name1, None, table1[val_name1][i1])
-            i1 += 1
-        elif x == -1:
-            add_entry(merged_table, table0['date'][i0], table0['time'][i0], val_name0, val_name1, table0[val_name0][i0], None)
-            i0 += 1
+    val_name0, val_name1 = ((table.keys() - {'date', 'time'}).pop() for table in (table0, table1))
+    idx0, idx1 = 0, 0
+
+    while idx0 < len(table0['date']) or idx1 < len(table1['date']):
+        check = check_time(table0, table1, idx0, idx1)
+        if check == 1:
+            add_entry(merged_table,
+                      table1['date'][idx1],
+                      table1['time'][idx1],
+                      val_name0,
+                      val_name1,
+                      None,
+                      table1[val_name1][idx1])
+            idx1 += 1
+
+        elif check == -1:
+            add_entry(merged_table,
+                      table0['date'][idx0],
+                      table0['time'][idx0],
+                      val_name0,
+                      val_name1,
+                      table0[val_name0][idx0],
+                      None)
+            idx0 += 1
+
         else:
-            try:
-                add_entry(merged_table, table1['date'][i1], table1['time'][i1], val_name0, val_name1, table0[val_name0][i0], table1[val_name1][i1])
-                i1 += 1
-                i0 += 1
-            except IndexError:
-                break
+                add_entry(merged_table,
+                          table1['date'][idx1],
+                          table1['time'][idx1],
+                          val_name0,
+                          val_name1,
+                          table0[val_name0][idx0],
+                          table1[val_name1][idx1])
+                idx1 += 1
+                idx0 += 1
 
     print_table(merged_table)
     return merged_table
 
 
 def print_table(table):
-
+    header = ' ' + ' | '.join(str.format('{0: ^9s}', key) for key in table.keys())
+    print(header)
+    print('-' * len(header))
     for i in range(len(table['date'])):
-        output = ''
-        for key, val in table.items():
-            output += str(val[i]) + ' | '
-        print(output)
+        print(' | '.join(str.format('{0: ^9s}', str(val[i])) for val in table.values()))
