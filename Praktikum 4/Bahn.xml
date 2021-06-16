@@ -1,0 +1,49 @@
+<map>
+	<node name="München">
+		<next>ICE 1180-1580-1</next>
+		<next>ICE 720</next>
+		<next>ICE 800</next>
+		<next>RE 4854</next>
+	</node>
+	<node name="Ingolstadt">
+		<next>ICE 1180-1580-2</next>
+		<next>ag 84245</next>
+	</node>
+	<node name="Nürnberg">
+		<next>RE 58214</next>
+		<next>ICE 1180-1580-3</next>
+	</node>
+	<node name="Würzburg">
+	</node>
+	<node name="Regensburg">
+		<next>RE 4852</next>
+	</node>
+	
+	<edge name="ICE 720" weight="132">
+		<next>Würzburg</next>
+	</edge>	
+	<edge name="ag 84245" weight="64">
+		<next>Regensburg</next>
+	</edge>	
+	<edge name="ICE 1180-1580-1" weight="41">
+		<next>Ingolstadt</next>
+	</edge>	
+	<edge name="ICE 1180-1580-2" weight="38">
+		<next>Nürnberg</next>
+	</edge>	
+	<edge name="ICE 1180-1580-3" weight="52">
+		<next>Würzburg</next>
+	</edge>	
+	<edge name="ICE 800" weight="65">
+		<next>Nürnberg</next>
+	</edge>
+	<edge name="RE 58214" weight="71">
+		<next>Würzburg</next>
+	</edge>
+	<edge name="RE 4854" weight="91">
+		<next>Regensburg</next>
+	</edge>
+	<edge name="RE 4852" weight="65">
+		<next>Nürnberg</next>
+	</edge>
+</map>

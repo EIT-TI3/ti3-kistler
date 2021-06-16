@@ -1,0 +1,30 @@
+<map>
+	<node name="A">
+		<next>E</next>
+		<next>F</next>
+	</node>
+	<node name="B">
+        <next>G</next>
+        <next>H</next>
+	</node>
+	<node name="C">
+        <next>I</next>
+	</node>
+    <node name="D">
+    </node>
+	<edge name="E" weight="5">
+		<next>B</next>
+	</edge>	
+	<edge name="F" weight="2">
+		<next>C</next>
+	</edge>
+    <edge name="G" weight="1">
+        <next>D</next>
+    </edge>
+    <edge name="H" weight="3">
+        <next>A</next>
+    </edge>
+    <edge name="I" weight="2">
+        <next>D</next>
+    </edge>
+</map>
