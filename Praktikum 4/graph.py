@@ -65,23 +65,19 @@ class Graph:
             node.reset()
         start_node.dist = 0
 
+        path = [start_node]
+
         while unvisited_nodes:
             visiting_node = min(unvisited_nodes)
             if visiting_node == target_node:
                 break
             unvisited_nodes.remove(visiting_node)
+            path.append(visiting_node)
 
             for node, weight in visiting_node.neighbours():
                 dist_to_node = visiting_node.dist + weight
                 if dist_to_node < node.dist:
                     node.dist = dist_to_node
                     node.pre = visiting_node
-
-        path = [target_node]
-        pre = target_node.pre
-        while pre is not None:
-            path.append(pre)
-            pre = pre.pre
-        path.reverse()
 
         return [node.name for node in path], target_node.dist
